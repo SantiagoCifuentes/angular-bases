@@ -1,0 +1,31 @@
+<h3>Listado de heroes</h3>
+
+<!-- el else está creando una referencia local, denotada por el # y lo que hace es que
+si el deletedHero no se cumple, o sea no se ha borrado ningún héroe, entonces aparecerá el
+"no ha borrado nada" -->
+<div *ngIf="deletedHero; else nothingwasDeleted">
+  <h3>Héroe borrado <small class="text-danger">{{deletedHero}}</small></h3>
+</div>
+
+<!-- el ng template es como si tuviera un div "invisible", no lo construye el html -->
+<ng-template #nothingwasDeleted>
+  <h3>No ha borrado nada.</h3>
+</ng-template>
+
+
+
+
+<button
+  *ngIf="heroNames.length > 0"
+  (click)="removeLastHero()" class="btn btn-outline-danger">
+  Borrar ultimo heroe
+</button>
+
+<ul class="mt-2 list-group">
+
+  <li *ngFor="let name of heroNames"
+  class="list-group-item">
+  <strong>{{name}}</strong>
+</li>
+
+</ul>
